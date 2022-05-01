@@ -8,7 +8,7 @@ Documentation: [https://pkg.go.dev/github.com/Zamony/golimit](https://pkg.go.dev
 package main
 
 import (
-  "github.com/Zamony/golimit"
+    "github.com/Zamony/golimit"
 )
 
 func main() {

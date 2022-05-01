@@ -17,9 +17,9 @@ func main() {
     
     for i := 0; i < 20; i++ {
         if lim.Limit(1) {
-            fmt.Println("Over limit!")
+            println("Over limit!")
         } else {
-            fmt.Println("OK")
+            println("OK")
         }
     }
 }

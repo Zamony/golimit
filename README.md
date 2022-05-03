@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-    // Allow up to 10 calls per second
+	// Allow up to 10 calls per second
 	lim := New(10, time.Second)
 
 	for {

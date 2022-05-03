@@ -8,19 +8,19 @@ Documentation: [https://pkg.go.dev/github.com/Zamony/golimit](https://pkg.go.dev
 package main
 
 import (
+    "log"
     "github.com/Zamony/golimit"
 )
 
 func main() {
-    // Create a new rate-limiter, allowing up-to 10 calls per second
-    lim := golimit.New(10, time.Second)
-    
-    for i := 0; i < 20; i++ {
-        if lim.Limit(1) {
-            println("Over limit!")
-        } else {
-            println("OK")
-        }
-    }
+    // Allow up to 10 calls per second
+	lim := New(10, time.Second)
+
+	for {
+		if !lim.Limit(1) {
+			log.Printf("ok")
+		}
+	}
 }
+
 ```

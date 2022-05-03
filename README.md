@@ -1,4 +1,4 @@
-Simple goroutine-safe rate-limiter
+Simple goroutine-safe rate limiter
 
 Documentation: [https://pkg.go.dev/github.com/Zamony/golimit](https://pkg.go.dev/github.com/Zamony/golimit)
 

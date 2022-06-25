@@ -8,7 +8,7 @@ import (
 // Limiter is a goroutine-safe rate-limiter,
 // which implements token-bucket algorithm.
 type Limiter struct {
-	mu     *sync.Mutex
+	mu     sync.Mutex
 	limit  float64
 	curr   float64
 	period float64
@@ -18,10 +18,10 @@ type Limiter struct {
 // New creates a new limiter with specified limit and period.
 func New(limit float64, period time.Duration) *Limiter {
 	return &Limiter{
-		mu:     &sync.Mutex{},
+		mu:     sync.Mutex{},
 		limit:  limit,
 		curr:   limit,
-		period: float64(period.Microseconds()),
+		period: float64(period.Nanoseconds()),
 		last:   0,
 	}
 }
@@ -31,7 +31,7 @@ func New(limit float64, period time.Duration) *Limiter {
 func (l *Limiter) Limit(n float64) bool {
 	l.mu.Lock()
 	defer l.mu.Unlock()
-	now := float64(time.Now().UnixMicro())
+	now := float64(time.Now().UnixNano())
 	l.curr += (now - l.last) * l.limit / l.period
 	l.last = now
 	if l.curr > l.limit {

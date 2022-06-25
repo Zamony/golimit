@@ -15,7 +15,7 @@ import (
 
 func main() {
 	// Allow up to 10 calls per second
-	lim := New(10, time.Second)
+	lim := golimit.New(10, time.Second)
 
 	for {
 		if !lim.Limit(1) {
